@@ -4,4 +4,8 @@ export const Container = styled.SafeAreaView`
   padding: 20px;
 `;
 
-export const Title = styled.Text``;
+export const Title = styled.Text`
+  font-size: 20px;
+  color: ${({ theme }) => theme.colors.black};
+  font-weight: bold;
+`;
