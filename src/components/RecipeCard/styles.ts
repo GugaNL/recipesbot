@@ -69,6 +69,7 @@ export const ContentFooter = styled.View`
 export const DurationIcon = styled(MaterialIcons)`
   font-size: 16px;
   margin-right: 8px;
+  color: ${({ theme }) => theme.colors.lightGray};
 `;
 
 export const DurationText = styled.Text`

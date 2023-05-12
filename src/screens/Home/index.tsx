@@ -6,6 +6,7 @@ import { ScreenNavigationProp } from '../../interfaces';
 import SearchInput from '../../components/SearchInput';
 import Categories from '../../components/Categories';
 import RecipeCard from '../../components/RecipeCard';
+import Card from '../../components/Card';
 
 const Home = () => {
   const { navigate } = useNavigation<ScreenNavigationProp>();
@@ -37,6 +38,23 @@ const Home = () => {
         categories={['Todos', 'Popular']}
         selectedCategory="Todos"
         onCategoryPress={() => {}}
+      />
+
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ marginHorizontal: -20 }}
+        data={[1, 2, 3]}
+        keyExtractor={item => String(item)}
+        renderItem={() => (
+          <Card
+            title="Churrasco grego"
+            image=""
+            rating={3}
+            duration="20min"
+            style=""
+          />
+        )}
       />
     </Container>
   );
