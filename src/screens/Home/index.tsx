@@ -7,9 +7,13 @@ import SearchInput from '../../components/SearchInput';
 import Categories from '../../components/Categories';
 import RecipeCard from '../../components/RecipeCard';
 import Card from '../../components/Card';
+import { useQuery } from '@apollo/client';
+import { GET_CATEGORIES } from '../../graphql/queries/category';
 
 const Home = () => {
   const { navigate } = useNavigation<ScreenNavigationProp>();
+  const { loading, error, data: dataCategories } = useQuery(GET_CATEGORIES);
+  const { categories = [] } = dataCategories || {};
 
   return (
     <Container>
@@ -34,11 +38,9 @@ const Home = () => {
         )}
       />
 
-      <Categories
-        categories={['Todos', 'Popular']}
-        selectedCategory="Todos"
-        onCategoryPress={() => {}}
-      />
+      {categories && categories.length > 0 && (
+        <Categories categories={categories} onCategoryPress={() => {}} />
+      )}
 
       <FlatList
         horizontal

@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components/native';
+import { ICategory } from '../../interfaces';
+import { FlatList } from 'react-native';
 
 type ItemButtonProps = {
   selected: boolean;
@@ -9,7 +11,7 @@ type TextButtonProps = {
   selected: boolean;
 };
 
-export const List = styled.FlatList`
+export const List = styled(FlatList as typeof FlatList<ICategory>)`
   margin-top: 24px;
   margin-left: -24px;
   margin-right: -24px;
@@ -33,7 +35,7 @@ export const ItemButton = styled.TouchableOpacity.attrs(
     `}
 
   ${props =>
-    props.index === 0 &&
+    props.index === 1 &&
     css`
       margin-left: 24px;
     `}
