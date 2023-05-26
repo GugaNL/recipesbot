@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 
 export const styles = StyleSheet.create({
   container: {
@@ -75,4 +75,14 @@ export const DurationIcon = styled(MaterialIcons)`
 export const DurationText = styled.Text`
   color: ${({ theme }) => theme.colors.lightGray};
   font-size: 11px;
+`;
+
+export const ContainerRating = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const IconStar = styled(FontAwesome)`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.yellow};
 `;

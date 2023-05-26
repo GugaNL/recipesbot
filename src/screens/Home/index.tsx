@@ -9,34 +9,33 @@ import RecipeCard from '../../components/RecipeCard';
 import Card from '../../components/Card';
 import { useQuery } from '@apollo/client';
 import { GET_CATEGORIES } from '../../graphql/queries/category';
+import { GET_RECIPES } from '../../graphql/queries/recipe';
+import RecipesFeatured from '../../components/RecipesFeatured';
 
 const Home = () => {
   const { navigate } = useNavigation<ScreenNavigationProp>();
-  const { loading, error, data: dataCategories } = useQuery(GET_CATEGORIES);
+  const {
+    loading: loadingCategory,
+    error: errorCategory,
+    data: dataCategories,
+  } = useQuery(GET_CATEGORIES);
   const { categories = [] } = dataCategories || {};
+
+  const {
+    loading: loadingRecipe,
+    error: errorRecipe,
+    data: dataRecipes,
+  } = useQuery(GET_RECIPES);
+  const { recipes = [] } = dataRecipes || {};
 
   return (
     <Container>
       <SearchInput pressable onPress={() => navigate('Search')} />
       <Title>Receitas em destaque</Title>
 
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ marginHorizontal: -20 }}
-        data={[1, 2, 3]}
-        keyExtractor={item => String(item)}
-        renderItem={index => (
-          <RecipeCard
-            title="Churrasco grego"
-            image=""
-            rating={3}
-            duration="20min"
-            style=""
-            //style={index === 0 ? { marginLeft: 24 } : {}}
-          />
-        )}
-      />
+      {recipes && recipes.length > 0 && (
+        <RecipesFeatured recipesData={recipes} onRecipePress={() => {}} />
+      )}
 
       {categories && categories.length > 0 && (
         <Categories categories={categories} onCategoryPress={() => {}} />

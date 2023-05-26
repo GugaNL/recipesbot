@@ -44,7 +44,7 @@ export const ItemButton = styled.TouchableOpacity.attrs(
 export const TextButton = styled.Text.attrs((props: TextButtonProps) => ({
   selected: props.selected,
 }))<TextButtonProps>`
-  font-size: 13px;
+  font-size: 15px;
   color: ${({ theme }) => theme.colors.green};
   font-weight: bold;
   padding: 12px 8px;
